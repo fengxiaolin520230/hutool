@@ -578,7 +578,7 @@ public class ClassUtil {
 				if (BasicType.unWrap(type1) != BasicType.unWrap(type2)) {
 					return false;
 				}
-			} else if (false == type1.isAssignableFrom(type2)) {
+			} else if (!type1.isAssignableFrom(type2)) {
 				return false;
 			}
 		}
@@ -838,7 +838,7 @@ public class ClassUtil {
 	 * @return 是否为非public
 	 */
 	public static boolean isNotPublic(Class<?> clazz) {
-		return false == isPublic(clazz);
+		return !isPublic(clazz);
 	}
 
 	/**
@@ -848,7 +848,7 @@ public class ClassUtil {
 	 * @return 是否为非public
 	 */
 	public static boolean isNotPublic(Method method) {
-		return false == isPublic(method);
+		return !isPublic(method);
 	}
 
 	/**
@@ -869,7 +869,7 @@ public class ClassUtil {
 	 * @return 方法
 	 */
 	public static Method setAccessible(Method method) {
-		if (null != method && false == method.isAccessible()) {
+		if (null != method && !method.isAccessible()) {
 			method.setAccessible(true);
 		}
 		return method;
@@ -903,13 +903,13 @@ public class ClassUtil {
 	 */
 	public static boolean isNormalClass(Class<?> clazz) {
 		return null != clazz //
-				&& false == clazz.isInterface() //
-				&& false == isAbstract(clazz) //
-				&& false == clazz.isEnum() //
-				&& false == clazz.isArray() //
-				&& false == clazz.isAnnotation() //
-				&& false == clazz.isSynthetic() //
-				&& false == clazz.isPrimitive();//
+				&& !clazz.isInterface() //
+				&& !isAbstract(clazz) //
+				&& !clazz.isEnum() //
+				&& !clazz.isArray() //
+				&& !clazz.isAnnotation() //
+				&& !clazz.isSynthetic() //
+				&& !clazz.isPrimitive();//
 	}
 
 	/**
